@@ -1,56 +1,30 @@
-# **Finding Lane Lines on the Road** 
-[![Udacity - Self-Driving Car NanoDegree](https://s3.amazonaws.com/udacity-sdc/github/shield-carnd.svg)](http://www.udacity.com/drive)
+The goals of this Finding-Lanes project is that:
+Make a pipeline that finds lanes on the road
+Compile all the images to form a lane detection algorithm which detects lanes in the given video
+To write a writeup of the steps I took to get the end result 
 
-<img src="examples/laneLines_thirdPass.jpg" width="480" alt="Combined Image" />
+All the code is available in lane-linecode.ipynb
 
-Overview
----
+Describe the Pipeline:
+I imported the image to be read 
+1) Then I turned that colored image into a grayscale image version of it
+2)  After I converted the image to a greyscale version of it, I turned it into a GaussianBlur. The GaussianBlur allowed for everything execpt the lane line to be present, highlighting the lane lines and blurring environment around the lane lines
+3) After I converted the image into a GaussianBlur into an Canny Edge Detection. Canny Edge Detection is a filter where it highlights the lane lines and muting out the environment.
+4) After I converted the image into Canny Edge Detection, I defined the region of interest. The region of interest is a space in the Canny Edge Dectection where I, with some help from Vuiseng9, adapted some of his code into my algorithm to suit my purpose of using it to specify this area as a region of interest. This means with the use of the already defined Canny Edge Detection image that I created earlier and OpenCV will use matplotlib to better classify the region that needs to be isolated and outlined for the cameras to follow.
+5) After creating the region of interest from the Canny Edge Detection version of the solidYellowLeft.jpg, with the help of Vuiseng9, I adapted his version of the code into my algorithm where it blended the two images, the region of interest and solidYellowLeft.jpg, due to this blending lines will be better defined and the image would be a little darker.
+6) Then I created a pipeline where all of the images are compiled with the help of liferlisiqi and then create a video of it. I then translated this pipeline into video format to compile the images into one successful video with lane line detection.
+Results & Reflection: The results of the first project is that I have created a project from an image to a video which is a compilation of images. I believe that I have created that with the end result of my project which I have been working very hard on. I can't forget two sources where I got most of my direction from and it would be plagerism if I did not include them in my works cited and that is Vuiseng9 & liferlisiqi. I believe that not only did I complete the project but I have completed it with the best of my ability trying to learn things on the fly.
+Potential Shortcomings:
+The lane lines
+The time that it took to submit the project
+The color of the lane lines that are being tracked are not in the colors that would be best suited for the effectiveness of reading the lane lines.
+Potential Improvements:
+I can finish my projects faster 
+Condense my code shorter than my first project
+Resources that I have adapted into my code:
+https://github.com/vuiseng9/SDCND-P001-Finding-Lane-Lines
+https://github.com/liferlisiqi/Finding-Lane-Lines
 
-When we drive, we use our eyes to decide where to go.  The lines on the road that show us where the lanes are act as our constant reference for where to steer the vehicle.  Naturally, one of the first things we would like to do in developing a self-driving car is to automatically detect lane lines using an algorithm.
-
-In this project you will detect lane lines in images using Python and OpenCV.  OpenCV means "Open-Source Computer Vision", which is a package that has many useful tools for analyzing images.  
-
-To complete the project, two files will be submitted: a file containing project code and a file containing a brief write up explaining your solution. We have included template files to be used both for the [code](https://github.com/udacity/CarND-LaneLines-P1/blob/master/P1.ipynb) and the [writeup](https://github.com/udacity/CarND-LaneLines-P1/blob/master/writeup_template.md).The code file is called P1.ipynb and the writeup template is writeup_template.md 
-
-To meet specifications in the project, take a look at the requirements in the [project rubric](https://review.udacity.com/#!/rubrics/322/view)
-
-
-Creating a Great Writeup
----
-For this project, a great writeup should provide a detailed response to the "Reflection" section of the [project rubric](https://review.udacity.com/#!/rubrics/322/view). There are three parts to the reflection:
-
-1. Describe the pipeline
-
-2. Identify any shortcomings
-
-3. Suggest possible improvements
-
-We encourage using images in your writeup to demonstrate how your pipeline works.  
-
-All that said, please be concise!  We're not looking for you to write a book here: just a brief description.
-
-You're not required to use markdown for your writeup.  If you use another method please just submit a pdf of your writeup. Here is a link to a [writeup template file](https://github.com/udacity/CarND-LaneLines-P1/blob/master/writeup_template.md). 
-
-
-The Project
----
-
-## If you have already installed the [CarND Term1 Starter Kit](https://github.com/udacity/CarND-Term1-Starter-Kit/blob/master/README.md) you should be good to go!   If not, you should install the starter kit to get started on this project. ##
-
-**Step 1:** Set up the [CarND Term1 Starter Kit](https://classroom.udacity.com/nanodegrees/nd013/parts/fbf77062-5703-404e-b60c-95b78b2f3f9e/modules/83ec35ee-1e02-48a5-bdb7-d244bd47c2dc/lessons/8c82408b-a217-4d09-b81d-1bda4c6380ef/concepts/4f1870e0-3849-43e4-b670-12e6f2d4b7a7) if you haven't already.
-
-**Step 2:** Open the code in a Jupyter Notebook
-
-You will complete the project code in a Jupyter notebook.  If you are unfamiliar with Jupyter Notebooks, check out [Udacity's free course on Anaconda and Jupyter Notebooks](https://classroom.udacity.com/courses/ud1111) to get started.
-
-Jupyter is an Ipython notebook where you can run blocks of code and see results interactively.  All the code for this project is contained in a Jupyter notebook. To start Jupyter in your browser, use terminal to navigate to your project directory and then run the following command at the terminal prompt (be sure you've activated your Python 3 carnd-term1 environment as described in the [CarND Term1 Starter Kit](https://github.com/udacity/CarND-Term1-Starter-Kit/blob/master/README.md) installation instructions!):
-
-`> jupyter notebook`
-
-A browser window will appear showing the contents of the current directory.  Click on the file called "P1.ipynb".  Another browser window will appear displaying the notebook.  Follow the instructions in the notebook to complete the project.  
-
-**Step 3:** Complete the project and submit both the Ipython notebook and the project writeup
-
-## How to write a README
-A well written README file can enhance your project and portfolio.  Develop your abilities to create professional README files by completing [this free course](https://www.udacity.com/course/writing-readmes--ud777).
-
+MLA Citation:
+vuiseng9. “vuiseng9/SDCND-P001-Finding-Lane-Lines.” GitHub, github.com/vuiseng9/SDCND-P001-Finding-Lane-Lines.
+Liferlisiqi. “Liferlisiqi/Finding-Lane-Lines.” GitHub, 2 Jan. 2018, github.com/liferlisiqi/Finding-Lane-Lines.
